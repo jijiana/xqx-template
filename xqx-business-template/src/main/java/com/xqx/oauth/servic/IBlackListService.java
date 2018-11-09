@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.xqx.base.exception.ServiceException;
 
+
 /**
  * token服务接口
  */
