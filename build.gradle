@@ -1,0 +1,58 @@
+subprojects{
+	ext {
+		springBootVersion = '2.0.4.RELEASE'
+		springModulVersion = '1.4.5.RELEASE'
+		springframeworkVersion = '5.0.5.RELEASE'
+		apolloClientVersion = '1.0.0'
+		mysqlVersion = '8.0.12'
+	}
+	buildscript {
+		
+		repositories {
+			mavenCentral()
+	   		jcenter()
+			maven { url 'http://unidal.org/nexus/content/repositories/releases/'}
+	        maven { url 'http://repo.spring.io/snapshot' }
+	        maven { url 'http://repo.spring.io/libs-snapshot' }
+	        maven { url 'http://repo.spring.io/milestone' }
+		}
+		dependencies {
+			classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		}
+	}
+	
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	
+	group = 'com.xqx'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+	
+	[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+	
+	repositories {
+		mavenLocal()
+		mavenCentral()
+   		jcenter()
+   		maven { url 'http://unidal.org/nexus/content/repositories/releases/'}
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'http://repo.spring.io/libs-snapshot' }
+        maven { url 'http://repo.spring.io/milestone' }
+	}
+	
+	
+	dependencies {
+		// json
+		compile 'com.google.code.gson:gson:2.8.5'
+		
+		testCompile 'junit:junit:4.12'
+		ext.jarTree = fileTree(dir: 'libs', include: '**/*.jar')
+        ext.rootProjectLibs = new File(rootProject.rootDir, 'libs').getAbsolutePath()
+        ext.jarTree += fileTree(dir: rootProjectLibs, include: '**/*.jar')
+        compile jarTree
+	}
+	configurations {
+    	// all*.exclude module: 'logback-classic'
+	}
+}

@@ -1,0 +1,5 @@
+rootProject.name = 'xqx-template'
+
+include 'xqx-base'
+include 'xqx-data-template'
+include 'xqx-business-template'

@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Implementation-Title: Apollo Core
+Implementation-Version: 0.11.0-SNAPSHOT
+Built-By: teng
+Specification-Vendor: Ctrip, Inc.
+Specification-Title: Apollo Core
+Implementation-Vendor-Id: com.ctrip.framework.apollo
+Created-By: Apache Maven 3.5.0
+Build-Jdk: 1.8.0_151
+Specification-Version: 0.11
+Implementation-URL: https://ctripcorp.github.io/apollo/apollo-core
+Implementation-Vendor: Ctrip, Inc.
+
