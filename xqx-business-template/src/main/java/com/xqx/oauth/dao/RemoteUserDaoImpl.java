@@ -1,8 +1,11 @@
 package com.xqx.oauth.dao;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -12,6 +15,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.dianping.cat.Cat;
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -32,10 +36,28 @@ public class RemoteUserDaoImpl implements IRemoteUserDao {
 	/** http协议 */
 	private static final String PROTOCOL = "http://";
 	/** 微服务名称 */
-	private static final String USER_DATA_SERVER_NAME = "XQX-USER-DATA";
+	private static final String USER_DATA_SERVER_NAME = "XQX-DATA-TEMPLATE";
 
 	@Autowired
 	private RestTemplate restTemplate;
+
+	// unless = "#result==null":返回结果为null则不缓存，sync=true 与 unless 不兼容)
+	// @HystrixCommand 服务降级
+	@SuppressWarnings("serial")
+	@Override
+	@HystrixCommand(fallbackMethod = "listAllUserFallback")
+	@Cacheable(value = "user", keyGenerator = "wiselyKeyGenerator", unless = "#result==null")
+	public List<UserDTO> listAllUser() throws CallRemoteServiceException {
+		// 调用登陆接口
+		String url = PROTOCOL + USER_DATA_SERVER_NAME + "/listAllUser";
+		ResponseMessage<?> body = getRemoteServiceResult(url, null, ResponseMessage.class);
+
+		logger.info("执行查询用户结果 == " + body);
+		checkResponse(body);
+		List<UserDTO> users = gson.fromJson(body.getData().toString(), new TypeToken<List<UserDTO>>() {}.getType());
+
+		return users;
+	}
 
 	@Override
 	@HystrixCommand(fallbackMethod = "addBlackListFallback")
@@ -80,6 +102,10 @@ public class RemoteUserDaoImpl implements IRemoteUserDao {
 	protected boolean doUnforbiddenByUserIdFallback(Long userId, Throwable throwable) {
 		Cat.logError(throwable);
 		return false;
+	}
+	protected List<UserDTO> listAllUserFallback(Throwable throwable) {
+		Cat.logError(throwable);
+		return null;
 	}
 
 	/**
@@ -128,4 +154,5 @@ public class RemoteUserDaoImpl implements IRemoteUserDao {
 					responseMessage.getMessage());
 		}
 	}
+
 }

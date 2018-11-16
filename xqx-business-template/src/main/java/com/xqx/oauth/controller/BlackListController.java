@@ -1,5 +1,7 @@
 package com.xqx.oauth.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xqx.base.exception.ServiceException;
+import com.xqx.base.pojo.dto.UserDTO;
 import com.xqx.base.vo.ResponseMessage;
 import com.xqx.oauth.servic.IBlackListService;
 
@@ -20,6 +23,20 @@ public class BlackListController {
 
 	@Autowired
 	private IBlackListService blackListService;
+
+	/**
+	 * 示例 <br/>
+	 * 获取所有用户信息
+	 * 
+	 * @return 包含用户传输实体信息的实体
+	 * @throws ServiceException 业务异常，包括：访问远程服务失败错误
+	 */
+	@PostMapping(value = "/listAllUser")
+	public ResponseMessage<List<UserDTO>> listAllUser() throws ServiceException {
+		List<UserDTO> userList = blackListService.listAllUser();
+		logger.info(userList.toString());
+		return ResponseMessage.success(userList);
+	}
 
 	/**
 	 * 加入黑名单

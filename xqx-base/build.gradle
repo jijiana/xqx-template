@@ -1,4 +1,6 @@
 dependencies {
+	// spring aop
+	compile "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
 	compile "org.springframework:spring-web:${springframeworkVersion}"
 	// https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
 	compile 'javax.servlet:javax.servlet-api:3.1.0'
@@ -8,7 +10,5 @@ dependencies {
 	compile "org.apache.httpcomponents:httpmime:4.5.6"
 	// dianping cat
 	compile 'com.dianping.cat:cat-client:2.0.0'
-	// spring aop
-	compile "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
 }
 

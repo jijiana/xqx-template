@@ -4,7 +4,7 @@ server.tomcat.uri-encoding = utf-8
 server.port = 10090
 
 # 设置服务名称
-spring.application.name = xqx-user-data
+spring.application.name = xqx-data-template
 # eureka服务器地址
 eureka.client.serviceUrl.defaultZone = http://9.186.52.100:8080/eureka/
 
@@ -29,7 +29,7 @@ spring.jpa.hibernate.ddl-auto = update
 # Redis数据库索引（默认为0）
 spring.redis.database = 0
 # Redis服务器地址
-spring.redis.host = 9.186.52.153
+spring.redis.host = 9.186.52.100
 # Redis服务器连接端口
 spring.redis.port = 6379
 # Redis服务器连接密码（默认为空）
@@ -67,5 +67,5 @@ management.endpoints.web.exposure.include = *
 # Base path for Web endpoints. Relative to server.servlet.context-path or management.server.servlet.context-path if management.server.port is configured
 management.endpoints.web.base-path = /actuator
 # 应用Info信息，必须以info开头
-info.app.name = xqx-user-data
+info.app.name = xqx-data-template
 info.app.version = 1.0.0

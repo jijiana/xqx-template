@@ -1,25 +1,24 @@
-
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 dependencyManagement {
     imports {
-        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR1'
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
 
 dependencies {
 
 	compile project(':xqx-base')
-	compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+	compile "org.springframework.boot:spring-boot-starter-web"
 	// spring cloud eureka
 	compile "org.springframework.cloud:spring-cloud-starter-eureka:${springModulVersion}"
 	// spring cloud hystrix
-	compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix:${springModulVersion}"
+	compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
 	// spring cloud zipkin
 	compile "org.springframework.cloud:spring-cloud-starter-zipkin:2.0.1.RELEASE"
 	
-	compile "org.springframework.boot:spring-boot-starter-cache:${springBootVersion}"
+	compile "org.springframework.boot:spring-boot-starter-cache"
 	compile "com.github.ben-manes.caffeine:caffeine:2.6.2"
  	compile "org.springframework.boot:spring-boot-starter-actuator"
 }

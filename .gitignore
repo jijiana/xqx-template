@@ -1,0 +1,48 @@
+# Swap files
+*.swp
+*.swo
+
+# IDE related files
+.idea/
+.settings/
+*.iml
+*.resources.prefs
+
+# Compiled class file
+target
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# eclipse
+.classpath
+.project
+.settings/
+target/
+bin/
+gradle/
+.gradle/
+build/
+logs/
+gradlew
+gradlew.bat
+
+# mac
+.DS_Store
