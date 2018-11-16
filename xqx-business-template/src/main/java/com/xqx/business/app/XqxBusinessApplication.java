@@ -33,13 +33,13 @@ import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServl
 @EnableApolloConfig
 @EnableCaching
 @ComponentScan(basePackages = { "com.xqx.business", "com.xqx.base" })
-public class XqxOauthApplication {
+public class XqxBusinessApplication {
 
 	/**
 	 * 程序启动入口
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(XqxOauthApplication.class, args);
+		SpringApplication.run(XqxBusinessApplication.class, args);
 	}
 
 	/**
