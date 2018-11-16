@@ -1,4 +1,4 @@
-package com.xqx.oauth.dao;
+package com.xqx.business.dao;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.xqx.oauth.app;
+package com.xqx.business.app;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServl
 @SpringCloudApplication
 @EnableApolloConfig
 @EnableCaching
-@ComponentScan(basePackages = { "com.xqx.oauth", "com.xqx.base" })
+@ComponentScan(basePackages = { "com.xqx.business", "com.xqx.base" })
 public class XqxOauthApplication {
 
 	/**

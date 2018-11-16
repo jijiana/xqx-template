@@ -1,4 +1,4 @@
-package com.xqx.oauth.controller;
+package com.xqx.business.controller;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.xqx.base.exception.ServiceException;
 import com.xqx.base.pojo.dto.UserDTO;
 import com.xqx.base.vo.ResponseMessage;
-import com.xqx.oauth.servic.IBlackListService;
+import com.xqx.business.servic.IBlackListService;
 
 /**
  * 黑名单管理

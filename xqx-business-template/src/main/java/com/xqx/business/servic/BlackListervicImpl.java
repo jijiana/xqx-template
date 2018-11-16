@@ -1,4 +1,4 @@
-package com.xqx.oauth.servic;
+package com.xqx.business.servic;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.xqx.base.exception.CallRemoteServiceException;
 import com.xqx.base.exception.ErrorCode;
 import com.xqx.base.exception.ServiceException;
 import com.xqx.base.pojo.dto.UserDTO;
-import com.xqx.oauth.dao.IRemoteUserDao;
+import com.xqx.business.dao.IRemoteUserDao;
 
 @Service
 public class BlackListervicImpl implements IBlackListService {

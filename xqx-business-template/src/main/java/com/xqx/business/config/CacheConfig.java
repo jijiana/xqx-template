@@ -1,4 +1,4 @@
-package com.xqx.oauth.config;
+package com.xqx.business.config;
 
 import java.lang.reflect.Method;
 
