@@ -1,4 +1,4 @@
-server.port = 9988
+erver.port = 9988
 # 设置服务名称
 spring.application.name = xqx-xxl-job-template
 # 系统设置
@@ -25,3 +25,4 @@ xxl.job.executor.logpath = /data/applogs/xxl-job/jobhandler
 ### xxl-job log retention days
 xxl.job.executor.logretentiondays = -1
 
+#xxl-job

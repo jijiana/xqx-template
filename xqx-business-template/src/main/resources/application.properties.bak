@@ -4,9 +4,18 @@ server.port = 10081
 spring.application.name = xqx-business-template
 # 系统设置
 server.tomcat.uri-encoding = utf-8
+#xxl-job
+# log config
+logging.config = classpath:logback.xml
 
 # eureka服务器地址
 eureka.client.serviceUrl.defaultZone = http://9.186.52.100:8080/eureka/
+
+#xxl-job 调度中心地址
+xxl.job.admin.addresses = http://9.186.52.100:9060/
+#xxl-job 任务描述名称
+xxl.job.admin.xxlJobDecName = 测试任务1
+
 # hystrix
 # 服务降级超时时间，默认1000ms
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds = 2000
