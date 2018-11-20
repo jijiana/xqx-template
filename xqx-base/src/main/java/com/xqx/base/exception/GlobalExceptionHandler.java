@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = Throwable.class)
 	@ResponseBody
 	public ResponseMessage<String> defaultErrorHandler(Throwable e, HttpServletRequest req) {
-		log.debug("捕获异常", e);
+		log.error("捕获异常", e);
 		Cat.logError(e);
 		return ResponseMessage.fail(ErrorCode.UNKNOWN_ERROR.getCode(), e.getMessage());
 	}

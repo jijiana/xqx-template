@@ -1,4 +1,4 @@
-package com.xqx.business.servic;
+package com.xqx.business.service;
 
 import java.util.HashSet;
 import java.util.List;

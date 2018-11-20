@@ -4,7 +4,7 @@ subprojects{
 		springModulVersion = '1.4.6.RELEASE'
 		springCloudVersion = 'Greenwich.M1'
 		springframeworkVersion = '5.1.2.RELEASE'
-		mysqlVersion = '8.0.12'
+		mysqlVersion = '5.1.47'
 	}
 	buildscript {
 		

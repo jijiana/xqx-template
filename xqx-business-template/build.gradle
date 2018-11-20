@@ -21,4 +21,5 @@ dependencies {
 	compile "org.springframework.boot:spring-boot-starter-cache"
 	compile "com.github.ben-manes.caffeine:caffeine:2.6.2"
  	compile "org.springframework.boot:spring-boot-starter-actuator"
+ 	compile "com.xuxueli:xxl-job-core:2.0.1"
 }

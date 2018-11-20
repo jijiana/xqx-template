@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.xqx.base.exception.ServiceException;
 import com.xqx.base.pojo.dto.UserDTO;
 import com.xqx.base.vo.ResponseMessage;
-import com.xqx.business.servic.IBlackListService;
+import com.xqx.business.service.IBlackListService;
 
 /**
  * 黑名单管理
