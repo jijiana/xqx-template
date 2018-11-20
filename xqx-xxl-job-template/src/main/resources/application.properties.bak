@@ -1,0 +1,27 @@
+server.port = 9988
+# 设置服务名称
+spring.application.name = xqx-xxl-job-template
+# 系统设置
+server.tomcat.uri-encoding = utf-8
+#xxl-job
+# log config
+logging.config = classpath:logback.xml
+
+# eureka服务器地址
+eureka.client.serviceUrl.defaultZone = http://9.186.52.100:8080/eureka/
+### xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+xxl.job.admin.addresses = http://9.186.52.100:9060/
+
+### xxl-job executor address
+xxl.job.executor.appname = xxl-job-executor-sample
+xxl.job.executor.ip = 
+xxl.job.executor.port = 9998
+
+### xxl-job, access token
+xxl.job.accessToken = passw0rd
+
+### xxl-job log path
+xxl.job.executor.logpath = /data/applogs/xxl-job/jobhandler
+### xxl-job log retention days
+xxl.job.executor.logretentiondays = -1
+

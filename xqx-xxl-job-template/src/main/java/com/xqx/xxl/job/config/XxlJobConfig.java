@@ -1,4 +1,4 @@
-package com.xqx.business.config;
+package com.xqx.xxl.job.config;
 
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import org.slf4j.Logger;
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @author xuxueli 2017-04-28
  */
 @Configuration
-@ComponentScan(basePackages = "com.xqx.business.jobhandler")
+@ComponentScan(basePackages = "com.xqx.xxl.job.jobhandler")
 public class XxlJobConfig {
     private Logger logger = LoggerFactory.getLogger(XxlJobConfig.class);
 

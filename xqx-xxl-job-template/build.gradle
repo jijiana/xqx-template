@@ -13,12 +13,8 @@ dependencies {
 	compile "org.springframework.boot:spring-boot-starter-web"
 	// spring cloud eureka
 	compile "org.springframework.cloud:spring-cloud-starter-eureka:${springModulVersion}"
+
 	// spring cloud hystrix
 	compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
-	// spring cloud zipkin
-	compile "org.springframework.cloud:spring-cloud-starter-zipkin:2.0.1.RELEASE"
-	
-	compile "org.springframework.boot:spring-boot-starter-cache"
-	compile "com.github.ben-manes.caffeine:caffeine:2.6.2"
- 	compile "org.springframework.boot:spring-boot-starter-actuator"
+ 	compile "com.xuxueli:xxl-job-core:2.0.1"
 }

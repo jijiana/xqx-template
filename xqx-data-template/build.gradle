@@ -24,6 +24,5 @@ dependencies {
 
 	compile "org.springframework.cloud:spring-cloud-starter-zipkin:2.0.1.RELEASE"
 	
-	compile "com.xuxueli:xxl-job-core:2.0.1"
 }
 

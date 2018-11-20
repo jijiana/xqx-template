@@ -1,4 +1,4 @@
-package com.xqx.business.jobhandler;
+package com.xqx.xxl.job.jobhandler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
