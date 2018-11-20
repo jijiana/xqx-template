@@ -15,6 +15,6 @@ public interface ICashBackRepository extends JpaRepository<UserDO,Long> {
 	
 	@Modifying
 	@Transactional
-    @Query(value = "update u_user set cashback_status = true,cashback_number=?1 where cashback_status = false",nativeQuery = true)
+    @Query(value = "update u_user set cashback_status = 1,cashback_number=?1 where cashback_status = 0",nativeQuery = true)
 	public void updateCashBackInfo(Long number);
 }

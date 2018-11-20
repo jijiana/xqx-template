@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.xqx.base.exception.CallRemoteServiceException;
+import com.xqx.base.exception.ErrorCode;
 import com.xqx.base.exception.ServiceException;
 import com.xqx.business.dao.IRegisterDao;
 import com.xqx.business.util.HttpClientUtils;
@@ -19,7 +20,7 @@ public class RegisterServiceImpl implements IRegisterService {
 	private IRegisterDao registerDao;
 	
 	@Override
-	public boolean saveNameAndPassword(String name, String password) throws ServiceException{
+	public void saveNameAndPassword(String name, String password) throws ServiceException{
 		try {
 			boolean insertNameAndPassword = registerDao.insertNameAndPassword(name, password);
 			if(insertNameAndPassword) {
@@ -30,16 +31,14 @@ public class RegisterServiceImpl implements IRegisterService {
 				HttpClientUtils client = HttpClientUtils.getInstance();
 				String resp = client.sendHttpPost(address,params);
 		    	System.out.println(resp);
+			}else {
+				throw new ServiceException(ErrorCode.TOKEN_REGISTERED);
 			}
-			return insertNameAndPassword;
-			
 		} catch (CallRemoteServiceException e) {
 			throw new ServiceException(e);
 		} catch (IOException e) {
-			//TODO
 			e.printStackTrace();
 		}
-		return false; 
 	}
 	
 	

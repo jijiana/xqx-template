@@ -23,6 +23,7 @@ public class UserDO {
 	}
 
 	public UserDO(Long id, String name, String password, Boolean forbidden) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.password = password;
@@ -65,4 +66,5 @@ public class UserDO {
 	public String toString() {
 		return "UserDO [id=" + id + ", name=" + name + ", password=" + password + ", forbidden=" + forbidden + "]";
 	}
+	
 }

@@ -16,7 +16,7 @@ import com.xqx.user.data.service.IRegisterService;
  */
 @RestController
 public class RegisterController {
-	private static Logger logger = LoggerFactory.getLogger(UserController.class);
+	private static Logger logger = LoggerFactory.getLogger(RegisterController.class);
 	
 	@Autowired
 	private IRegisterService registerService;
@@ -28,7 +28,7 @@ public class RegisterController {
 			registerService.saveNameAndPassword(name, password);
 			return ResponseMessage.success(true);
 		} catch (ServiceException e) {
-			logger.error("注册{}失败",name);
+			logger.error("注册失败",e);
 			return ResponseMessage.fail(e.getErrorCode().getCode(), e.getErrMsg());
 		}
 	}

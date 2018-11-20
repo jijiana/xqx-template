@@ -23,7 +23,7 @@ public class CashBackController {
 	public ResponseMessage<Boolean> doCashBackForUser(@RequestParam(value="param") String param){
 		try {
 			logger.info("返金");
-			cashBackService.doCashBackForUser(11l);
+			cashBackService.doCashBackForUser(Long.valueOf(param));
 			return ResponseMessage.success(true);
 		} catch (ServiceException e) {
 			logger.error("返金失败");

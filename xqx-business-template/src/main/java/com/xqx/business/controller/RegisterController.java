@@ -30,9 +30,9 @@ public class RegisterController {
 	 */
 	@PostMapping(value = "/register")
 	public ResponseMessage<Boolean> doRegister(@RequestParam("name") String name, @RequestParam("password") String password) throws ServiceException {
-		registerService.saveNameAndPassword(name, password);
-		logger.info("注册{}",name);
 		
-		return ResponseMessage.success(true);
+			registerService.saveNameAndPassword(name, password);
+			logger.info("注册{}成功",name);
+			return ResponseMessage.success(true);
 	}
 }

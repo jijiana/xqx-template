@@ -17,7 +17,10 @@ import com.xqx.business.dao.RegisterDaoImpl;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
-
+/**
+ * 
+ * xxl-job调用微服务
+ */
 @JobHandler(value="cashBackJobHandler")
 @Component
 public class CashBackJobHandler extends IJobHandler {
@@ -36,8 +39,8 @@ public class CashBackJobHandler extends IJobHandler {
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {
 		// 调用登陆接口
-		//Map<String, String> paramMap = new HashMap<String, String>();
 		MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<String, Object>();
+		
 		paramMap.add("param", param);
 		String url = PROTOCOL + USER_DATA_SERVER_NAME + "/doCashBackForUser";
 		String body = getRemoteServiceResult(url, paramMap, String.class);

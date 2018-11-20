@@ -43,11 +43,11 @@ public class RegisterDaoImpl implements IRegisterDao {
 		String url = PROTOCOL + USER_DATA_SERVER_NAME + "/insertNameAndPassword";
 		String body = getRemoteServiceResult(url, paramMap, String.class);
 
-		logger.info("执行冻结用户结果 == " + body);
+		logger.info("用户注册结果 == " + body);
 		ResponseMessage<?> responseMessage = gson.fromJson(body, ResponseMessage.class);
 		checkResponse(responseMessage);
 
-		return (Boolean) responseMessage.getData();
+		return (boolean) responseMessage.getData();
 	}
 	
 	protected boolean insertNameAndPasswordFallback(String name,String password, Throwable throwable) {

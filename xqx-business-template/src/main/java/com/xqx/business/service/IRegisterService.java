@@ -14,5 +14,5 @@ public interface IRegisterService {
 	 * @return
 	 * @throws ServiceException
 	 */
-	public boolean saveNameAndPassword(String name,String password) throws ServiceException;
+	public void saveNameAndPassword(String name,String password) throws ServiceException;
 }
