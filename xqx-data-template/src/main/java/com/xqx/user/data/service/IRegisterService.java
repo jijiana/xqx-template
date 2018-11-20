@@ -4,7 +4,7 @@ import com.xqx.base.exception.ServiceException;
 
 public interface IRegisterService {
 	/**
-	 * 
+	 * 注册用户接口
 	 * @param name
 	 * @param password
 	 * @throws ServiceException

@@ -9,7 +9,8 @@ import com.xqx.user.data.dao.ICashBackRepository;
 @Service
 public class CashBackServiceImpl implements ICashBackService {
 
-	@Autowired ICashBackRepository cashBackRepository;
+	@Autowired 
+	ICashBackRepository cashBackRepository;
 	@Override
 	public void doCashBackForUser(Long number) throws ServiceException {
 		cashBackRepository.updateCashBackInfo(number);

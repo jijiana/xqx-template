@@ -21,8 +21,12 @@ public class RegisterServiceImpl implements IRegisterService {
 		UserDO userDo = new UserDO();
 		userDo.setName(name);
 		userDo.setPassword(password);
+		/**
+		 * 根据name查询用户是否存在
+		 */
 		List<UserDO> users = registerRepository.findUserByName(name);
 		System.out.println(users);
+		//如果用户已经注册，则不允许重复添加
 		if(users.size()>0) {
 			throw new ServiceException(ErrorCode.TOKEN_REGISTERED);
 		}
