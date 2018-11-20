@@ -41,7 +41,7 @@ public class RegisterServiceImpl implements IRegisterService {
 				String resp = client.sendHttpPost(address,params);
 				logger.info(resp);
 			}else {
-				throw new ServiceException(ErrorCode.TOKEN_REGISTERED);
+				throw new ServiceException(ErrorCode.TOKEN_REGISTER_FAIL);
 			}
 		} catch (CallRemoteServiceException e) {
 			throw new ServiceException(e);
@@ -49,7 +49,4 @@ public class RegisterServiceImpl implements IRegisterService {
 			e.printStackTrace();
 		}
 	}
-	
-	
-
 }
