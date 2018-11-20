@@ -13,7 +13,6 @@ import com.google.gson.GsonBuilder;
 import com.xqx.base.exception.CallRemoteServiceException;
 import com.xqx.base.exception.ErrorCode;
 import com.xqx.base.vo.ResponseMessage;
-import com.xqx.business.dao.RegisterDaoImpl;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
@@ -25,7 +24,7 @@ import com.xxl.job.core.handler.annotation.JobHandler;
 @Component
 public class CashBackJobHandler extends IJobHandler {
 
-	private static final Logger logger = LoggerFactory.getLogger(RegisterDaoImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(CashBackJobHandler.class);
 	private static final Gson gson = new GsonBuilder().create();
 	
 	/** http协议 */
