@@ -1,18 +1,15 @@
 package com.xqx.business.jobhandler;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.dianping.cat.Cat;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.xqx.base.exception.CallRemoteServiceException;
 import com.xqx.base.exception.ErrorCode;
 import com.xqx.base.vo.ResponseMessage;
@@ -39,8 +36,9 @@ public class CashBackJobHandler extends IJobHandler {
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {
 		// 调用登陆接口
-		Map<String, String> paramMap = new HashMap<String, String>();
-		paramMap.put("param", param);
+		//Map<String, String> paramMap = new HashMap<String, String>();
+		MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<String, Object>();
+		paramMap.add("param", param);
 		String url = PROTOCOL + USER_DATA_SERVER_NAME + "/doCashBackForUser";
 		String body = getRemoteServiceResult(url, paramMap, String.class);
 		
