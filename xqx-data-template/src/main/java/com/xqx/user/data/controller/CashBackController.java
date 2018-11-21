@@ -18,7 +18,11 @@ public class CashBackController {
 	
 	@Autowired
 	private ICashBackService cashBackService;
-	
+	/**
+	 * 返金接口
+	 * @param param 返金金额
+	 * @return
+	 */
 	@PostMapping(value = "/doCashBackForUser")
 	public ResponseMessage<Boolean> doCashBackForUser(@RequestParam(value="param") String param){
 		try {

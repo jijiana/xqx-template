@@ -12,8 +12,8 @@ public class XxlJobConfig {
 
 	@Value("${xxl.job.admin.addresses}")
 	private String adminAddresses;
-	@Value("${xxl.job.admin.xxlJobDecName}")
-	private String xxlJobDecName;
+	@Value("${xxl.job.admin.xxlJobDesc}")
+	private String xxlJobDesc;
 
 	public String getAdminAddresses() {
 		return adminAddresses;
@@ -23,12 +23,13 @@ public class XxlJobConfig {
 		this.adminAddresses = adminAddresses;
 	}
 
-	public String getXxlJobDecName() {
-		return xxlJobDecName;
+	public String getXxlJobDesc() {
+		return xxlJobDesc;
 	}
 
-	public void setXxlJobDecName(String xxlJobDecName) {
-		this.xxlJobDecName = xxlJobDecName;
+	public void setXxlJobDesc(String xxlJobDesc) {
+		this.xxlJobDesc = xxlJobDesc;
 	}
-
+	
+	
 }

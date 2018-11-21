@@ -35,8 +35,10 @@ public class RegisterServiceImpl implements IRegisterService {
 				Map<String, String> params = new HashMap<String, String>();
 				//触发调度中心任务管理
 				String address = xxlJobConfig.getAdminAddresses()+"jobinfo/trigger/desc";
-				//测试任务 代表的是任务描述
-				params.put("jobDesc", xxlJobConfig.getXxlJobDecName());
+				//任务描述
+				params.put("jobDesc", xxlJobConfig.getXxlJobDesc());
+				//任务参数 
+				//params.put("executorParam", "2");
 				HttpClientUtils client = HttpClientUtils.getInstance();
 				String resp = client.sendHttpPost(address,params);
 				logger.info(resp);
@@ -46,7 +48,7 @@ public class RegisterServiceImpl implements IRegisterService {
 		} catch (CallRemoteServiceException e) {
 			throw new ServiceException(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ServiceException(ErrorCode.HTTP_ERROR);
 		}
 	}
 }
