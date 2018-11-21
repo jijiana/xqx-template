@@ -41,10 +41,10 @@ subprojects{
 	
 	dependencies {
 		// json
-		compile 'com.google.code.gson:gson:2.8.5'
+		implementation('com.google.code.gson:gson:2.8.5')
 		// apollo		
-		compile 'com.ctrip.framework.apollo:apollo-client:1.1.2'
-		testCompile 'junit:junit:4.12'
+		implementation('com.ctrip.framework.apollo:apollo-client:1.1.2')
+		testImplementation('junit:junit:4.12')
 	}
 	configurations {
     	// all*.exclude module: 'logback-classic'

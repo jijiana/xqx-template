@@ -8,13 +8,9 @@ dependencyManagement {
 }
 
 dependencies {
-
-	compile project(':xqx-base')
-	compile "org.springframework.boot:spring-boot-starter-web"
-	// spring cloud eureka
-	compile "org.springframework.cloud:spring-cloud-starter-eureka:${springModulVersion}"
-
-	// spring cloud hystrix
-	compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
- 	compile "com.xuxueli:xxl-job-core:2.0.1"
+	implementation(project(':xqx-base'))
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.cloud:spring-cloud-starter-eureka:${springModulVersion}")
+	implementation("org.springframework.cloud:spring-cloud-starter-netflix-hystrix")
+ 	implementation("com.xuxueli:xxl-job-core:2.0.1")
 }

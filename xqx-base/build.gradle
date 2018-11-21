@@ -1,15 +1,10 @@
 apply plugin: 'maven'
 dependencies {
-	// spring aop
-	compile "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
-	compile "org.springframework:spring-web:${springframeworkVersion}"
-	// https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-	compile 'javax.servlet:javax.servlet-api:3.1.0'
-	
-	// apache http client
-	compile "org.apache.httpcomponents:httpclient:4.5.6"
-	compile "org.apache.httpcomponents:httpmime:4.5.6"
-	// dianping cat
-	compile 'com.dianping.cat:cat-client:2.0.0'
+	implementation("org.springframework.boot:spring-boot-starter-aop:${springBootVersion}")
+	implementation("org.springframework:spring-web:${springframeworkVersion}")
+	implementation("javax.servlet:javax.servlet-api:4.0.1")
+	implementation("org.apache.httpcomponents:httpclient:4.5.6")
+	implementation("org.apache.httpcomponents:httpmime:4.5.6")
+	implementation('com.dianping.cat:cat-client:2.0.0')
 }
 
