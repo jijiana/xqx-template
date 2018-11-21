@@ -2,19 +2,13 @@ subprojects{
 	ext {
 		springBootVersion = '2.1.0.RELEASE'
 		springModulVersion = '1.4.6.RELEASE'
-		springCloudVersion = 'Greenwich.M1'
+		springCloudVersion = 'Greenwich.M3'
 		springframeworkVersion = '5.1.2.RELEASE'
 		mysqlVersion = '5.1.47'
 	}
 	buildscript {
-		
 		repositories {
 			mavenCentral()
-	   		jcenter()
-			maven { url 'http://unidal.org/nexus/content/repositories/releases/'}
-	        maven { url 'http://repo.spring.io/snapshot' }
-	        maven { url 'http://repo.spring.io/libs-snapshot' }
-	        maven { url 'http://repo.spring.io/milestone' }
 		}
 		dependencies {
 			classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -35,10 +29,13 @@ subprojects{
 		mavenLocal()
 		mavenCentral()
    		jcenter()
-   		maven { url 'http://unidal.org/nexus/content/repositories/releases/'}
+		maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+        maven { url 'http://repo.spring.io/milestone' }
         maven { url 'http://repo.spring.io/snapshot' }
         maven { url 'http://repo.spring.io/libs-snapshot' }
-        maven { url 'http://repo.spring.io/milestone' }
+   		maven { url 'http://unidal.org/nexus/content/repositories/releases/'}
 	}
 	
 	
