@@ -2,6 +2,9 @@ package com.xqx.business.dao;
 
 import com.xqx.base.exception.CallRemoteServiceException;
 
+/**
+ * 远程访问dao接口
+ */
 public interface IRegisterDao {
 	/**
 	 * 远程保存用户名和密码

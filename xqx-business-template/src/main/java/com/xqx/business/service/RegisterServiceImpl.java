@@ -46,7 +46,7 @@ public class RegisterServiceImpl implements IRegisterService {
 		} catch (CallRemoteServiceException e) {
 			throw new ServiceException(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ServiceException(ErrorCode.HTTP_ERROR);
 		}
 	}
 }
