@@ -1,5 +1,6 @@
 package com.xqx.xxl.job.jobhandler;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,9 @@ public class CashBackJobHandler extends IJobHandler {
 	public ReturnT<String> execute(String param) throws Exception {
 		// 调用登陆接口
 		MultiValueMap<String, Object> paramMap = new LinkedMultiValueMap<String, Object>();
-		
+		if(StringUtils.isEmpty(param)) {
+			return SUCCESS;
+		}
 		paramMap.add("param", param);
 		String url = PROTOCOL + USER_DATA_SERVER_NAME + "/doCashBackForUser";
 		String body = getRemoteServiceResult(url, paramMap, String.class);

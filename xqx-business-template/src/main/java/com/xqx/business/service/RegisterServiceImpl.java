@@ -38,7 +38,7 @@ public class RegisterServiceImpl implements IRegisterService {
 				//任务描述
 				params.put("jobDesc", xxlJobConfig.getXxlJobDesc());
 				//任务参数 
-				//params.put("executorParam", "2");
+				params.put("executorParam", "2");
 				HttpClientUtils client = HttpClientUtils.getInstance();
 				String resp = client.sendHttpPost(address,params);
 				logger.info(resp);
