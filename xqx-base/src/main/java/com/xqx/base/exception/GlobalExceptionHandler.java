@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = RuntimeException.class)
 	@ResponseBody
 	public ResponseMessage<String> runtimeExceptionHandler(RuntimeException e, HttpServletRequest req) {
-		log.debug("捕获异常", e);
+		log.info("捕获异常,{}", e.getMessage());
 		Cat.logError(e);
 		return ResponseMessage.fail(ErrorCode.UNKNOWN_ERROR.getCode(), e.getMessage());
 	}
@@ -58,6 +58,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = BaseException.class)
 	@ResponseBody
 	public ResponseMessage<String> baseExceptionHandler(BaseException e, HttpServletRequest req) {
+		log.info("捕获异常,{}", e.getMessage());
 		Cat.logEvent(e.getClass().getName(), e.getErrorCode().toString());
 		return ResponseMessage.fail(e);
 	}
@@ -71,6 +72,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = DaoException.class)
 	@ResponseBody
 	public ResponseMessage<String> daoExceptionHandler(DaoException e, HttpServletRequest req) {
+		log.info("捕获异常,{}", e.getMessage());
 		Cat.logEvent(e.getClass().getName(), e.getErrorCode().toString());
 		return ResponseMessage.fail(ErrorCode.DAO_ERROR.getCode(), ErrorCode.DAO_ERROR.getDescription());
 	}

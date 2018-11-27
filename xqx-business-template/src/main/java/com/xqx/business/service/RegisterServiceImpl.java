@@ -1,8 +1,7 @@
 package com.xqx.business.service;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,43 +11,43 @@ import org.springframework.stereotype.Service;
 import com.xqx.base.exception.CallRemoteServiceException;
 import com.xqx.base.exception.ErrorCode;
 import com.xqx.base.exception.ServiceException;
+import com.xqx.base.util.RemoteRespCheckUtils;
+import com.xqx.base.vo.ResponseMessage;
 import com.xqx.business.config.XxlJobConfig;
-import com.xqx.business.dao.IRegisterDao;
-import com.xqx.business.util.HttpClientUtils;
+import com.xqx.business.dao.IUserDataFeignClient;
+import com.xqx.business.dao.IXxlJobFeignClient;
 
 @Service
 public class RegisterServiceImpl implements IRegisterService {
 	private static final Logger logger = LoggerFactory.getLogger(RegisterServiceImpl.class);
 	@Autowired
-	private IRegisterDao registerDao;
-	
-	@Autowired 
+	private IUserDataFeignClient feignClient;
+	@Autowired
+	private IXxlJobFeignClient jobFeignClient;
+	@Autowired
 	private XxlJobConfig xxlJobConfig;
+
 	@Override
-	public void saveNameAndPassword(String name, String password) throws ServiceException{
+	public void saveNameAndPassword(String name, String password) throws ServiceException {
 		try {
-			boolean insertNameAndPassword = registerDao.insertNameAndPassword(name, password);
-			if(insertNameAndPassword) {
-				/**
-				 * 调用调度中心
-				 */
-				Map<String, String> params = new HashMap<String, String>();
-				//触发调度中心任务管理
-				String address = xxlJobConfig.getAdminAddresses()+"jobinfo/trigger/desc";
-				//任务描述
-				params.put("jobDesc", xxlJobConfig.getXxlJobDesc());
-				//任务参数 
-				params.put("executorParam", "2");
-				HttpClientUtils client = HttpClientUtils.getInstance();
-				String resp = client.sendHttpPost(address,params);
-				logger.info(resp);
-			}else {
-				throw new ServiceException(ErrorCode.TOKEN_REGISTER_FAIL);
-			}
+
+			System.out.println("start" + new SimpleDateFormat("HH:mm:ss.SSS").format(new Date()));
+			ResponseMessage<?> remoteResp = feignClient.insertNameAndPassword(name, password);
+			System.out.println("end  " + new SimpleDateFormat("HH:mm:ss.SSS").format(new Date()));
+			RemoteRespCheckUtils.checkResponse(remoteResp);
 		} catch (CallRemoteServiceException e) {
-			throw new ServiceException(e);
-		} catch (IOException e) {
-			throw new ServiceException(ErrorCode.HTTP_ERROR);
+			logger.info("注册失败{},{}", e.getErrMsg());
+			throw new ServiceException(e.getErrorCode());
+		}
+
+		String triggerJobResp = "";
+		try {
+			triggerJobResp = jobFeignClient.triggerJob(xxlJobConfig.getXxlJobDesc(), "3");
+			RemoteRespCheckUtils.checkJobResponse(triggerJobResp);
+		} catch (CallRemoteServiceException e) {
+			logger.error("调用xxl-job返回信息：{}", triggerJobResp);
+			logger.error("调用远程job失败", e);
+			throw new ServiceException(ErrorCode.XXL_JOB_FAIL);
 		}
 	}
 }

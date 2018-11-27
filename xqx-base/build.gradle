@@ -1,7 +1,14 @@
-apply plugin: 'maven'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+dependencyManagement {
+    imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-aop:${springBootVersion}")
-	implementation("org.springframework:spring-web:${springframeworkVersion}")
+	implementation("org.springframework.boot:spring-boot-starter-aop")
+	implementation("org.springframework:spring-web")
 	implementation("javax.servlet:javax.servlet-api:4.0.1")
 	implementation("org.apache.httpcomponents:httpclient:4.5.6")
 	implementation("org.apache.httpcomponents:httpmime:4.5.6")

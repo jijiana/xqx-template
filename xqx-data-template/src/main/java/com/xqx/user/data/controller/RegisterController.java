@@ -12,24 +12,20 @@ import com.xqx.base.vo.ResponseMessage;
 import com.xqx.user.data.service.IRegisterService;
 
 /**
- *  用户注册
+ * 用户注册
  */
 @RestController
 public class RegisterController {
 	private static Logger logger = LoggerFactory.getLogger(RegisterController.class);
-	
+
 	@Autowired
 	private IRegisterService registerService;
-	
+
 	@PostMapping(value = "/insertNameAndPassword")
-	public ResponseMessage<Boolean> insertNameAndPassword(@RequestParam("name") String name,@RequestParam("password") String password){
-		try {
-			logger.info("注册{}",name);
-			registerService.saveNameAndPassword(name, password);
-			return ResponseMessage.success(true);
-		} catch (ServiceException e) {
-			logger.error("注册失败",e);
-			return ResponseMessage.fail(e.getErrorCode().getCode(), e.getErrMsg());
-		}
+	public ResponseMessage<Boolean> insertNameAndPassword(@RequestParam("name") String name,
+			@RequestParam("password") String password) throws ServiceException {
+		logger.info("注册{}", name);
+		registerService.saveNameAndPassword(name, password);
+		return ResponseMessage.success(true);
 	}
 }

@@ -3,6 +3,7 @@ package com.xqx.user.data.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,18 +29,17 @@ public class UserController {
 	 * @param name     用户名
 	 * @param password 密码
 	 * @return 包含用户信息的实体
+	 * @throws ServiceException
 	 */
 	@PostMapping(value = "/findUserByNameAndPassword")
 	public ResponseMessage<UserDTO> findUserByNameAndPassword(@RequestParam("name") String name,
-			@RequestParam("password") String password) {
-		try {
-			UserDTO user = userService.getUserByNameAndPassword(name, password);
+			@RequestParam("password") String password) throws ServiceException {
+		logger.info("接受请求name={},password={}", name, Base64Utils.encodeToString(name.getBytes()));
+		
+		UserDTO user = userService.getUserByNameAndPassword(name, password);
 
-			logger.info(user.toString());
-			return ResponseMessage.success(user);
-		} catch (ServiceException e) {
-			return ResponseMessage.fail(e.getErrorCode().getCode(), e.getErrMsg());
-		}
+		logger.info(user.toString());
+		return ResponseMessage.success(user);
 	}
 
 }

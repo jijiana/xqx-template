@@ -13,25 +13,25 @@ import com.xqx.user.data.service.ICashBackService;
 
 @RestController
 public class CashBackController {
-	
+
 	private static Logger logger = LoggerFactory.getLogger(CashBackController.class);
-	
+
 	@Autowired
 	private ICashBackService cashBackService;
+
 	/**
 	 * 返金接口
+	 * 
 	 * @param param 返金金额
 	 * @return
+	 * @throws ServiceException
+	 * @throws NumberFormatException
 	 */
 	@PostMapping(value = "/doCashBackForUser")
-	public ResponseMessage<Boolean> doCashBackForUser(@RequestParam(value="param") String param){
-		try {
-			logger.info("返金");
-			cashBackService.doCashBackForUser(Long.valueOf(param));
-			return ResponseMessage.success(true);
-		} catch (ServiceException e) {
-			logger.error("返金失败");
-			return ResponseMessage.fail(e.getErrorCode().getCode(), e.getErrMsg());
-		}
+	public ResponseMessage<Boolean> doCashBackForUser(@RequestParam(value = "param") String param)
+			throws NumberFormatException, ServiceException {
+		logger.info("返金");
+		cashBackService.doCashBackForUser(Long.valueOf(param));
+		return ResponseMessage.success(true);
 	}
 }
