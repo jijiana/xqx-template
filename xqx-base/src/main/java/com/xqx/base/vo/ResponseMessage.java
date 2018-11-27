@@ -57,16 +57,6 @@ public class ResponseMessage<T> implements Serializable {
 	/**
 	 * 构造错误消息
 	 * 
-	 * @param <T> 返回数据类型
-	 * @return 消息
-	 */
-	public static <T> ResponseMessage<T> fallBackFail() {
-		return new ResponseMessage<T>(ErrorCode.HYSTRIX_FALLBACK.getCode(), "服务降级，远程访问失败", null);
-	}
-
-	/**
-	 * 构造错误消息
-	 * 
 	 * @param e 自定义异常
 	 * @return 消息
 	 */

@@ -12,6 +12,9 @@ public class RemoteRespCheckUtils {
 	 * @throws CallRemoteServiceException 远程调用异常，返回码不为0错误
 	 */
 	public static void checkResponse(ResponseMessage<?> responseMessage) throws CallRemoteServiceException {
+		if (responseMessage == null) {
+			throw new CallRemoteServiceException(ErrorCode.REMOTE_EXCEPTION);
+		}
 		if (responseMessage.getStatus() != 0) {
 			throw new CallRemoteServiceException(ErrorCode.getErrorCode(responseMessage.getStatus()),
 					responseMessage.getMessage());

@@ -8,9 +8,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
 import com.xqx.base.exception.CallRemoteServiceException;
 import com.xqx.base.exception.ErrorCode;
 import com.xqx.base.exception.ServiceException;
+import com.xqx.base.pojo.dto.UserDTO;
 import com.xqx.base.util.RemoteRespCheckUtils;
 import com.xqx.base.vo.ResponseMessage;
 import com.xqx.business.config.XxlJobConfig;
@@ -28,6 +30,18 @@ public class RegisterServiceImpl implements IRegisterService {
 	private XxlJobConfig xxlJobConfig;
 
 	@Override
+	public UserDTO findUserByNameAndPassword(String name, String password) throws ServiceException {
+		ResponseMessage<?> remoteResp = feignClient.findUserByNameAndPassword(name, password);
+		try {
+			RemoteRespCheckUtils.checkResponse(remoteResp);
+		} catch (CallRemoteServiceException e) {
+			logger.info("查询用户信息失败{}", e.getErrMsg());
+			throw new ServiceException(e.getErrorCode(), "微服务访问失败");
+		}
+		return new Gson().fromJson(remoteResp.getData().toString(), UserDTO.class);
+	}
+
+	@Override
 	public void saveNameAndPassword(String name, String password) throws ServiceException {
 		try {
 
@@ -36,7 +50,7 @@ public class RegisterServiceImpl implements IRegisterService {
 			System.out.println("end  " + new SimpleDateFormat("HH:mm:ss.SSS").format(new Date()));
 			RemoteRespCheckUtils.checkResponse(remoteResp);
 		} catch (CallRemoteServiceException e) {
-			logger.info("注册失败{},{}", e.getErrMsg());
+			logger.info("注册失败{}", e.getErrMsg());
 			throw new ServiceException(e.getErrorCode());
 		}
 
