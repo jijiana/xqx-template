@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dianping.cat.Cat;
 import com.xqx.base.vo.ResponseMessage;
 import com.xqx.business.dao.IUserDataFeignClient.UserDataFeignClientFallbackFactory;
-import com.xqx.business.dao.impl.UserDataFeignClientFallBack;
 
 import feign.hystrix.FallbackFactory;
 

@@ -1,7 +1,6 @@
-package com.xqx.business.dao.impl;
+package com.xqx.business.dao;
 
 import com.xqx.base.vo.ResponseMessage;
-import com.xqx.business.dao.IUserDataFeignClient;
 
 public class UserDataFeignClientFallBack implements IUserDataFeignClient {
 

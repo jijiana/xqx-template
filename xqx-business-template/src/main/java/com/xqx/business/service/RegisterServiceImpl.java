@@ -35,7 +35,7 @@ public class RegisterServiceImpl implements IRegisterService {
 		try {
 			RemoteRespCheckUtils.checkResponse(remoteResp);
 		} catch (CallRemoteServiceException e) {
-			logger.info("查询用户信息失败{}", e.getErrMsg());
+			logger.info("查询用户信息失败，{}", e.getErrMsg());
 			throw new ServiceException(e.getErrorCode(), "微服务访问失败");
 		}
 		return new Gson().fromJson(remoteResp.getData().toString(), UserDTO.class);

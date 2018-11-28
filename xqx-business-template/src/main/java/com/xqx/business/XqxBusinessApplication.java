@@ -25,7 +25,7 @@ import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 @EnableApolloConfig
 @EnableCaching
 @SpringCloudApplication
-@EnableFeignClients(basePackages = { "com.xqx" })
+@EnableFeignClients
 @ComponentScan(basePackages = { "com.xqx" })
 public class XqxBusinessApplication {
 
